@@ -25,3 +25,4 @@ library
                      , Concurrent.Chapter8.Section4
                      , Concurrent.Chapter9.Section1
                      , Concurrent.Chapter9.Section2
+                     , Concurrent.Chapter9.Section3

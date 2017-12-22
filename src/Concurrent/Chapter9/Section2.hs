@@ -11,17 +11,22 @@ problem1 m f = do
   a' <- f a `catch` \e -> putMVar m a >> throw (e :: SomeException)
   putMVar m a'
 
--- Something's wrong with this example
 problem2 :: MVar a -> (a -> IO a) -> IO ()
-problem2 m f = mask $ \restore -> do 
+-- mask can be interrupted by interruptable functions
+-- uninterruptibleMask cannot be interrupted, however it should be used with caution
+problem2 m f = uninterruptibleMask $ \restore -> do 
   a <- takeMVar m
   threadDelay 2000000
   a' <- restore (f a) `catch` \e -> putMVar m a >> throw (e :: SomeException)
   putMVar m a'
 
+-- modifyMVar_ insulated from need to use mask
+solution :: MVar a -> (a -> IO a) -> IO ()
+solution = modifyMVar_ 
+
 testProblem :: IO ()
 testProblem = do 
-  m <- newMVar ()
-  t <- forkIO $ problem2 m (return . id)
+  m <- newMVar 1
+  t <- forkIO $ solution m (return . (const 2))
   forkIO $ threadDelay 1000000 >> throwTo t ThreadKilled
-  void $ takeMVar m
+  takeMVar m >>= print
