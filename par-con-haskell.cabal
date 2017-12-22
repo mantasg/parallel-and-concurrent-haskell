@@ -26,3 +26,4 @@ library
                      , Concurrent.Chapter9.Section1
                      , Concurrent.Chapter9.Section2
                      , Concurrent.Chapter9.Section3
+                     , Concurrent.Chapter9.Section4
