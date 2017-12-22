@@ -3,8 +3,19 @@ version:             0.1.0.0
 cabal-version:       >=1.10
 build-type:          Simple
 
-executable par-con-haskell
-  hs-source-dirs:      src
+executable par-con-haskell-exe
+  hs-source-dirs:      .
   main-is:             Main.hs
   default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       base
+                     , par-con-haskell 
+
+library
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base
+                     , containers
+  exposed-modules:     Utils
+                     , Concurrent.Chapter7.Section1
+                     , Concurrent.Chapter7.Section2
+                     , Concurrent.Chapter7.Section3
