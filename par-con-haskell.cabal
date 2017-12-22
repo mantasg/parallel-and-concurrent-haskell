@@ -19,3 +19,7 @@ library
                      , Concurrent.Chapter7.Section1
                      , Concurrent.Chapter7.Section2
                      , Concurrent.Chapter7.Section3
+                     , Concurrent.Chapter8.Section1
+                     , Concurrent.Chapter8.Section2
+                     , Concurrent.Chapter8.Section3
+                     , Concurrent.Chapter8.Section4
