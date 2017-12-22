@@ -23,3 +23,5 @@ library
                      , Concurrent.Chapter8.Section2
                      , Concurrent.Chapter8.Section3
                      , Concurrent.Chapter8.Section4
+                     , Concurrent.Chapter9.Section1
+                     , Concurrent.Chapter9.Section2
